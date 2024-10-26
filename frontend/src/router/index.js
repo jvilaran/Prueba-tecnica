@@ -9,14 +9,14 @@ import ListaPrestamos from "../components/ListaPrestamos.vue";
 
 const routes = [
   {
+    path: "/",
+    name: "UserLogin",
+    component: UserLogin,
+  },
+  {
     path: "/listalib",
     name: "ListaLibro",
     component: ListaLibro, // Asigna el componente a la nueva ruta
-  },
-  {
-    path: "/login",
-    name: "UserLogin",
-    component: UserLogin,
   },
   {
     path: "/libros",

@@ -6,7 +6,7 @@
       <router-link to="/usuarios" class="link">Lista de usuarios</router-link>
       <router-link to="/devolver" class="link">Devolver libro</router-link>
       <router-link to="/prestamos" class="link">Libros en prestamo</router-link>
-      <router-link to="/login" class="link" @click="limpiarLocalStorage"
+      <router-link to="/" class="link" @click="limpiarLocalStorage"
         >Cerrar Sesión</router-link
       >
     </nav>
@@ -25,7 +25,7 @@ export default {
   computed: {
     mostrarNav() {
       // Retorna true si la ruta actual no es /login
-      return (this.$route.path !== "/login" && this.$route.path !== "/usuario");
+      return (this.$route.path !== "/" && this.$route.path !== "/usuario");
     },
   },
 };

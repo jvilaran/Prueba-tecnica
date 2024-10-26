@@ -38,7 +38,7 @@ services:
       - VUE_APP_API_URL=http://localhost:8000  # URL del backend para el frontend
     volumes:
       - ./frontend:/app
-    command: ["yarn", "serve"]
+    command: ["npm", "run", "serve"]  # Cambia 'yarn serve' por 'npm run serve'
 
 volumes:
   mongo_data:  # Volumen para persistir los datos de MongoDB

@@ -6,14 +6,8 @@
         <div class="usuario">
           <form @submit.prevent="handleCreate()">
             <div>
-              <label for="nombre">Nombre completo:</label>
-              <input
-                type="nombre"
-                id="nombre"
-                v-model="nombre"
-                required
-                v-on:keypress="validarTexto"
-              />
+              <label for="nombre">Nombre:</label>
+              <input type="nombre" id="nombre" v-model="nombre" required />
               <label for="correo">Correo Electrónico:</label>
               <input type="correo" id="corre" v-model="correo" required />
               <label for="telefono">Teléfono:</label>
@@ -25,7 +19,7 @@
                 v-on:keypress="validarNumero"
               />
             </div>
-            <router-link to="/login" class="link"
+            <router-link to="/" class="link"
               >Si tienes cuenta, inicia sesión aquí</router-link
             >
             <button type="submit">Registrarse</button>
@@ -84,12 +78,6 @@ export default {
       const char = String.fromCharCode(event.keyCode);
       if (!/[0-9]/.test(char)) {
         event.preventDefault(); // Evita que se ingrese si no es número
-      }
-    },
-    validarTexto(event) {
-      const char = String.fromCharCode(event.keyCode);
-      if (!/[a-zA-Z]/.test(char)) {
-        event.preventDefault(); // Evita que se ingrese si no es letra
       }
     },
   },
