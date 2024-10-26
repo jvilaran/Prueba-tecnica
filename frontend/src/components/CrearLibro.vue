@@ -9,7 +9,13 @@
           <label for="autor">Autor:</label>
           <input type="autor" id="autor" v-model="autor" required />
           <label for="cantidad">Cantidad:</label>
-          <input type="cantidad" id="cantidad" v-model="cantidad" required />
+          <input
+            type="number"
+            id="cantidad"
+            v-model="cantidad"
+            required
+            v-on:keypress="validarNumero"
+          />
           <button type="submit">Guardar</button>
         </form>
       </div>
@@ -57,6 +63,12 @@ export default {
       this.titulo = "";
       this.autor = "";
       this.cantidad = "";
+    },
+    validarNumero(event) {
+      const char = String.fromCharCode(event.keyCode);
+      if (!/[0-9]/.test(char)) {
+        event.preventDefault(); // Evita que se ingrese si no es número
+      }
     },
   },
 };

@@ -1,8 +1,8 @@
 <template>
   <div class="lista-prestamos">
     <h1>Lista de libros en prestamo</h1>
-    <p>{{ usuarioJSON._id }}</p>
-    <table class="user-table">
+    <div v-if="prestamos.length !== 0">
+      <table class="user-table">
       <thead>
         <tr>
           <th>Prestamos ID</th>
@@ -20,6 +20,8 @@
         </tr>
       </tbody>
     </table>
+    </div>
+    <p v-if="prestamos.length === 0" class="info">No hay registros de préstamos realizados</p>
   </div>
 </template>
 
@@ -60,6 +62,12 @@ export default {
   border-radius: 10px;
   background-color: rgb(37, 37, 37);
   color: white;
+}
+
+.info {
+  color: red;
+  border: 1px solid red;
+  padding: 1rem;
 }
 
 /* Título */

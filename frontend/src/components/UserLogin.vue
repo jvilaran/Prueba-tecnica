@@ -22,7 +22,7 @@ import api from "../services/api";
 export default {
   data() {
     return {
-      email: "",
+      email: "test@mail.com",
       // Recuperar el objeto del localStorage
       nombreGuardado: JSON.parse(localStorage.getItem("usuario")),
     };

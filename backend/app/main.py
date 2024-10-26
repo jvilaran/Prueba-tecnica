@@ -217,3 +217,27 @@ def borrar_prestamo(_id: str):
         raise HTTPException(status_code=404, detail="Préstamo no encontrado.")
     
     return {"message": "Préstamo eliminado con éxito"}
+
+# Datos por defecto para libros
+datalibros = [
+    {"titulo": "Cien años de soledad", "autor": "Gabriel García Márquez", "cantidad": 5, "disponible": True},
+    {"titulo": "Don Quijote de la Mancha", "autor": "Miguel de Cervantes", "cantidad": 3, "disponible": True},
+    {"titulo": "1984", "autor": "George Orwell", "cantidad": 4, "disponible": True},
+]
+
+# Datos por defecto para usuarios
+datausuarios = [
+    {"nombre": "Jhunior Villamil", "correo": "jhunior@mail.com", "telefono": 3218188177},
+    {"nombre": "test", "correo": "test@mail.com", "telefono": 3541874981}
+]
+
+def inicializar_datos(coleccion, datos):
+    if coleccion.count_documents({}) == 0:  # Solo insertar si la colección está vacía
+        coleccion.insert_many(datos)
+        print(f"Datos insertados exitosamente en {coleccion.name}.")
+    else:
+        print(f"La colección {coleccion.name} ya tiene datos.")
+
+# Insertar datos por defecto
+inicializar_datos(libros_col, datalibros)
+inicializar_datos(usuarios_col, datausuarios)

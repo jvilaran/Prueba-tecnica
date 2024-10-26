@@ -1,9 +1,6 @@
 # Usar una imagen de Node.js
 FROM node:16
 
-# Configurar el directorio de trabajo
-WORKDIR /app
-
 # Copiar los archivos de dependencias y luego instalar
 COPY package.json package-lock.json ./
 RUN npm install
