@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  # Servicio para la base de datos MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"  # Exponer el puerto para conectar con MongoDB desde el backend
+    volumes:
+      - mongo_data:/data/db  # Volumen para persistir datos
+
+  # Servicio para el backend FastAPI
+  backend:
+    build:
+      context: ./backend
+    container_name: fastapi-backend
+    ports:
+      - "8000:8000"  # Exponer el puerto del backend
+    depends_on:
+      - mongodb      # Esperar a que MongoDB esté listo
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017  # Conexión a MongoDB
+    volumes:
+      - ./backend:/app
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  # Servicio para el frontend Vue.js
+  frontend:
+    build:
+      context: ./frontend
+    container_name: vue-frontend
+    ports:
+      - "8080:8080"  # Exponer el puerto del frontend
+    depends_on:
+      - backend      # Asegurarse de que el backend esté listo
+    environment:
+      - VUE_APP_API_URL=http://localhost:8000  # URL del backend para el frontend
+    volumes:
+      - ./frontend:/app
+    command: ["yarn", "serve"]
+
+volumes:
+  mongo_data:  # Volumen para persistir los datos de MongoDB
