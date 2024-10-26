@@ -52,7 +52,7 @@ export default {
         };
         api.crearUsuario(payload);
         Swal.fire({
-          title: "Aviso",
+          title: "¡Listo!",
           text: "El usuario se ha registrado exitosamente",
           icon: "success",
           confirmButtonText: "Aceptar",

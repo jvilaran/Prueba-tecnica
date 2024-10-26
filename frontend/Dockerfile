@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Exponer el puerto del servidor de Vue (si usas `vite` o `webpack-dev-server`)
-EXPOSE 8081
+EXPOSE 8080
 
 # Comando para correr el servidor de Vue.js
 CMD ["npm", "run", "serve"]

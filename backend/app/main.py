@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pymongo import MongoClient
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel
 from bson import ObjectId
 from fastapi.middleware.cors import CORSMiddleware
 import datetime
@@ -11,7 +11,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8081"],  # El origen del frontend
+    allow_origins=["http://localhost:8080"],  # El origen del frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,7 +42,7 @@ class objeto_ID(ObjectId):
         return ObjectId(v)
 
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema):
+    def __modify_schema__(cls, field_schema):
         field_schema.update(type='string')
 
 # Modelos Pydantic

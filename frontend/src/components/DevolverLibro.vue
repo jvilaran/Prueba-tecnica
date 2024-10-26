@@ -30,7 +30,7 @@ export default {
         .then(() => {
           // Mostrar ventana emergente
           Swal.fire({
-            title: "Aviso para devolución",
+            title: "¡Excelente!",
             text: "El libro se ha devuelto exitosamente",
             icon: "info",
             confirmButtonText: "Aceptar",
